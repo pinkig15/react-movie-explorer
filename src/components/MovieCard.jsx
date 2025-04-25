@@ -20,7 +20,7 @@ const MovieCard = ({ movie, onClick }) => {
       <div className="relative">
       <img src={movie.Poster} alt={movie.Title} className="w-full h-auto" />
       <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="text-white font-bold" onClick={() => onClick(movie.imdbID)}>View details</span>
+          <span className="text-white font-bold" onClick={() => onClick ? onClick(movie.imdbID) : null}>View details</span>
         </div>
       </div>
       <h2 className="text-lg font-semibold">{movie.Title}</h2>
