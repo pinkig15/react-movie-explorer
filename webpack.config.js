@@ -1,38 +1,38 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: "./src/index.jsx",
+  mode: 'production',
+  entry: './src/index.jsx',
   output: {
-    filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
     clean: true,
-    publicPath: "/",
+    publicPath: '/',
   },
-  mode: process.env.NODE_ENV || "development",
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
     ],
   },
   devServer: {
-    static: path.join(__dirname, "public"),
+    static: path.join(__dirname, 'public'),
     historyApiFallback: true,
     hot: true,
     port: 3000,
@@ -40,13 +40,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
     new Dotenv(),
   ],
   optimization: {
     splitChunks: {
-      chunks: "all",
+      chunks: 'all',
     },
   },
-};
+}
